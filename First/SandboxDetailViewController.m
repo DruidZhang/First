@@ -63,7 +63,9 @@
 
 - (void)loadImageFile{
     UIImage *image = [UIImage imageWithContentsOfFile:_filePath];
-    _imageView = [[UIImageView alloc]initWithFrame:CGRectMake(20, _topBarHeight+10,MAX(_screenWidth-40, image.size.width),MAX(_screenHeight-_topBarHeight, image.size.height))];
+    CGFloat imageViewWidth = MIN(_screenWidth, image.size.width);
+    CGFloat imageViewHeight = MIN(_screenHeight, image.size.height);
+    _imageView = [[UIImageView alloc]initWithFrame:CGRectMake((_screenWidth-imageViewWidth)/2, 50,imageViewWidth,imageViewHeight)];
     _imageView.image = image;
     _imageView.userInteractionEnabled = YES;
     [self.view addSubview:_imageView];
