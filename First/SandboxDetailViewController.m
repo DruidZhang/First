@@ -55,6 +55,7 @@
               || [path hasSuffix:@".mov"] || [path hasSuffix:@".MOV"]
               || [path hasSuffix:@".mp3"] || [path hasSuffix:@".MP3"]){
         //音视频文件
+        [self loadAVFile];
     } else {
         //其他文件
         [self loadTextFile:@"不支持此文件格式"];
@@ -82,7 +83,19 @@
 }
 
 - (void)loadAVFile{
+    _avPlayerVC = [[AVPlayerViewController alloc]init];
+    NSURL *sourceMediaURL = [NSURL fileURLWithPath:_filePath];
+    AVAsset *mediaAsset = [AVURLAsset URLAssetWithURL:sourceMediaURL options:nil];
+    AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:mediaAsset];
+    AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
     
+    _avPlayerVC.player = player;
+    _avPlayerVC.view.translatesAutoresizingMaskIntoConstraints =YES;
+    _avPlayerVC.view.bounds = self.view.bounds;
+    [_avPlayerVC.player play];
+    
+    [self addChildViewController:self.avPlayerVC];
+    [self.view addSubview:self.avPlayerVC.view];
 }
 
 @end
