@@ -77,7 +77,6 @@
     _textView.font = [UIFont systemFontOfSize:UIFont.systemFontSize];
     _textView.textColor = [UIColor blackColor];
     _textView.backgroundColor = [UIColor redColor];
-    //    _textView.textAlignment = nstextalignment;
     _textView.text = text;
     [self.view addSubview:_textView];
 }
