@@ -63,6 +63,9 @@
     myView.clickShareBtn = ^{
         [self doShare];
     };
+    myView.clickStatusBarBtn = ^{
+        [self setStatusBarBackgroundColor:[UIColor redColor]];
+    };
     
     self.view = myView;
 }
@@ -155,6 +158,13 @@
     }
     
     [db close];
+}
+
+- (void)setStatusBarBackgroundColor:(UIColor *) color{
+    UIView *statusBar = [[UIApplication sharedApplication] valueForKey:@"statusBar"];
+    if([statusBar respondsToSelector:@selector(setBackgroundColor:)]) {
+        statusBar.backgroundColor = color;
+    }
 }
 
 - (void)varargFun: (NSString *)sql ,...{

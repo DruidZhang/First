@@ -16,6 +16,7 @@
 @property (strong,nonatomic) UIButton *btn_image;
 @property (strong,nonatomic) UIButton *btn_db;
 @property (strong,nonatomic) UIButton *btn_share;
+@property (strong,nonatomic) UIButton *btn_statusBar;
 
 @end
 
@@ -80,6 +81,11 @@
         [_btn_share addTarget:self action:@selector(btnShareClick) forControlEvents:UIControlEventTouchDown];
         [self addSubview:_btn_share];
         
+        _btn_statusBar = [[UIButton alloc] initWithFrame:CGRectMake(120,590,140,50)];
+        _btn_statusBar.backgroundColor = [UIColor grayColor];
+        [_btn_statusBar setTitle:@"改变状态栏颜色" forState:UIControlStateNormal];
+        [_btn_statusBar addTarget:self action:@selector(btnStatusBbarClick) forControlEvents:UIControlEventTouchDown];
+        [self addSubview:_btn_statusBar];
         
         [self setNeedsDisplay];
     }
@@ -124,6 +130,10 @@
 
 - (void)btnShareClick {
     self.clickShareBtn();
+}
+
+- (void)btnStatusBbarClick {
+    self.clickStatusBarBtn();
 }
 
 @end

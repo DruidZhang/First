@@ -34,6 +34,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic, copy) void (^clickShareBtn)(void);
 
+@property(nonatomic,copy) void(^clickStatusBarBtn)(void);
+
 @end
 
 NS_ASSUME_NONNULL_END
